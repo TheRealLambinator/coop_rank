@@ -1,0 +1,2 @@
+pypdf4==1.27.0
+pre-commit

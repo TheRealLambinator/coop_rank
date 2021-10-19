@@ -1,0 +1,29 @@
+[tool.black]
+line_length = 120
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+combine_as_imports = true
+line_length = 120
+default_section = "THIRDPARTY"
+
+# pylint options can be found here https://www.codeac.io/documentation/pylint-configuration.html
+[tool.pylint.BASIC]
+docstring-min-length = 10
+good-names=[
+    "i",
+    "j",
+    "k",
+    "ex",
+    "Run",
+    "_",
+    "x",
+    "y",
+    "fd",
+]
+
+[tool.pylint.DESIGN]
+min-public-methods = 0
