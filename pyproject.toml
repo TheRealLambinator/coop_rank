@@ -24,6 +24,8 @@ good-names=[
     "x",
     "y",
     "fd",
+    "f",
+    "p",
 ]
 
 [tool.pylint.DESIGN]
