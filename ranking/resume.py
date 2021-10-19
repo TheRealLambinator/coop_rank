@@ -4,7 +4,7 @@ import re
 from io import StringIO
 from pathlib import Path
 
-from PyPDF4.pdf import PdfFileReader
+import pdfplumber
 
 from .weighted_pattern import WeightedPattern
 
@@ -30,13 +30,13 @@ class Resume:
         self.last_name = name_match.group(2)
         self.student_number = int(name_match.group(3))
 
-        with open(str(pdf_filename), "rb") as f:
-            pdf = PdfFileReader(f)
+        with pdfplumber.open(str(pdf_filename)) as pdf:
 
             text = StringIO()
-            for i in range(pdf.numPages):
-                page = pdf.getPage(i)
-                text.write(page.extractText())
+            for page in pdf.pages:
+                page_text = page.extract_text()
+                if page_text:
+                    text.write(page_text)
 
             used_patterns = set()
 

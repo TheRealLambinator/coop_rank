@@ -30,10 +30,16 @@ def main():
     for file in {x for x in directory.iterdir() if x.is_file()}:
         try:
             resume = Resume(file, patterns)
-            print(str(resume))
             resumes.append(resume)
+            print(".", end="", flush=True)
         except ValueError:
             pass
+
+    print()
+    resumes.sort(key=lambda x: x.total_weight, reverse=True)
+
+    for resume in resumes:
+        print(str(resume))
 
 
 if __name__ == "__main__":

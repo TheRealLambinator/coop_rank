@@ -1,4 +1,4 @@
-pypdf4
+pdfPlumber
 pre-commit
 black
 pylint
