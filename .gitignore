@@ -1,3 +1,4 @@
 resumes/
 .venv
 .vscode
+__pycache__/

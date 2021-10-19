@@ -1,0 +1,65 @@
+{
+    "directory": ".\\resumes\\2022-winter\\",
+    "patterns": [
+        {
+            "pattern": "[Cc]\\+\\+",
+            "weight": 3,
+            "count_all": false
+        },
+        {
+            "pattern": "[Pp]ython",
+            "weight": 10,
+            "count_all": false
+        },
+        {
+            "pattern": "[Gg][Ii][Tt]",
+            "weight": 1,
+            "count_all": false
+        },
+        {
+            "pattern": "[Jj]ava",
+            "weight": 2,
+            "count_all": false
+        },
+        {
+            "pattern": "[Kk]otlin",
+            "weight": 2,
+            "count_all": false
+        },
+        {
+            "pattern": "[Jj]ira",
+            "weight": 1,
+            "count_all": false
+        },
+        {
+            "pattern": "[Jj]enkins",
+            "weight": 1,
+            "count_all": false
+        },
+        {
+            "pattern": "[Uu][Ss][Bb]",
+            "weight": 2,
+            "count_all": false
+        },
+        {
+            "pattern": "[Oo][Pp][Ee][Nn][Cc][Vv]",
+            "weight": 2,
+            "count_all": false
+        },
+        {
+            "pattern": "[Pp][Yy][Qq][Tt]",
+            "weight": 3,
+            "count_all": false
+        },
+        {
+            "pattern": "OUTSTANDING",
+            "weight": 2,
+            "count_all": true
+        },
+        {
+            "pattern": "EXCELLENT",
+            "weight": 1,
+            "count_all": true
+        }
+    ]
+}
