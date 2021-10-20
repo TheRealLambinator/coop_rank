@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import shutil
 from pathlib import Path
 
 from ranking.resume import Resume
@@ -26,7 +27,7 @@ def main():
     patterns_str = "\n".join([str(x) for x in patterns])
     print(f"Using the following patterns with weights:\n{patterns_str}")
 
-    resumes = []
+    resumes: list[Resume] = []
     for file in {x for x in directory.iterdir() if x.is_file()}:
         try:
             resume = Resume(file, patterns)
@@ -40,6 +41,15 @@ def main():
 
     for resume in resumes:
         print(str(resume))
+
+    take_number = int(len(resumes) * float(config["take_percent"]) / 100.0)
+    take_resumes = resumes[0:take_number]
+
+    take_directory = Path(config["take_directory"])
+    take_directory.mkdir(parents=True, exist_ok=True)
+
+    for resume in take_resumes:
+        shutil.copy(str(resume.file_path), str(take_directory / resume.file_path.name))
 
 
 if __name__ == "__main__":

@@ -19,6 +19,7 @@ class Resume:
     first_name: str
     last_name: str
     student_number: int
+    file_path: Path
 
     def __init__(self, pdf_filename: Path, patterns: list[WeightedPattern], full_debug: bool = False) -> None:
 
@@ -26,6 +27,7 @@ class Resume:
         if name_match is None:
             raise ValueError("Not a coop resume")
 
+        self.file_path = pdf_filename
         self.first_name = name_match.group(1)
         self.last_name = name_match.group(2)
         self.student_number = int(name_match.group(3))

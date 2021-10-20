@@ -1,5 +1,7 @@
 {
     "directory": ".\\resumes\\2022-winter\\",
+    "take_percent": 33.0,
+    "take_directory": ".\\resumes\\2022-winter\\first_pass\\",
     "patterns": [
         {
             "pattern": "[Cc]\\+\\+",
