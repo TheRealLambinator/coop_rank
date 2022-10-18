@@ -51,6 +51,12 @@ def main():
     for resume in take_resumes:
         shutil.copy(str(resume.file_path), str(take_directory / resume.file_path.name))
 
+    print("--------------- Taken --------------")
+    take_resumes.sort(key=lambda x: x.last_name, reverse=False)
+    take_resumes.sort(key=lambda x: x.first_name, reverse=False)
+    for resume in take_resumes:
+        print(str(resume))
+
 
 if __name__ == "__main__":
     main()

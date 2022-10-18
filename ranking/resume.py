@@ -8,6 +8,8 @@ import pdfplumber
 
 from .weighted_pattern import WeightedPattern
 
+EMAIL_ADDRESS_PATTERN = re.compile(r"[a-zA-Z0-9]+[\._]?[a-zA-Z0-9]+[@]\w+[.]\w{2,3}")
+
 # first 2 groups are student name, third group is student id
 PDF_FILENAME_PATTERN = re.compile(r"([a-zA-Z ]*)-([a-zA-Z]+)-([0-9]+)-(.*)")
 
@@ -31,6 +33,7 @@ class Resume:
         self.first_name = name_match.group(1)
         self.last_name = name_match.group(2)
         self.student_number = int(name_match.group(3))
+        self.email = ""
 
         with pdfplumber.open(str(pdf_filename)) as pdf:
 
@@ -46,6 +49,11 @@ class Resume:
             for line in text.readlines():
                 if full_debug:
                     print(line.encode("utf-8"))
+
+                email_match = re.search(EMAIL_ADDRESS_PATTERN, line)
+                if email_match:
+                    self.email = email_match.group(0)
+
                 for p in patterns:
                     if p.pattern_string in used_patterns:  # don't double count key words
                         break
@@ -58,4 +66,4 @@ class Resume:
                             used_patterns.add(p.pattern_string)
 
     def __str__(self):
-        return f"{self.last_name}, {self.first_name} ({self.student_number}): {self.total_weight}"
+        return f"{self.last_name} {self.first_name} {self.email} {self.student_number} {self.total_weight}"
